@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Video} from "../../types/video";
 
 @Component({
   selector: 'app-video-player',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './video-player.component.scss'
 })
 export class VideoPlayerComponent {
+  @Input({ required: true}) video: Video | undefined
 
 }

@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Video } from '../../types/video';
-import {VideoThumbnailComponent} from "../video-thumbnail/video-thumbnail.component";
+import { VideoThumbnailComponent } from "../video-thumbnail/video-thumbnail.component";
 
 @Component({
   selector: 'app-video-list',
@@ -13,8 +13,10 @@ import {VideoThumbnailComponent} from "../video-thumbnail/video-thumbnail.compon
 export class VideoListComponent {
   @Input({required: true}) videoList: Array<Video> = []
   selectedVideo: any;
+  @Output() onVideoSelected = new EventEmitter<Video>()
 
       setSelectedVideo(video: any){
         this.selectedVideo = video;
+        this.onVideoSelected.emit(video);
       }
 }
