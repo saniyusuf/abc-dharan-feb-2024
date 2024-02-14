@@ -11,7 +11,7 @@ import { VideoThumbnailComponent } from "../video-thumbnail/video-thumbnail.comp
   styleUrl: './video-list.component.scss'
 })
 export class VideoListComponent {
-  @Input({required: true}) videoList: Array<Video> = []
+  @Input({required: true}) videoList: Array<Video> | null = []
   selectedVideo: any;
   @Output() onVideoSelected = new EventEmitter<Video>()
 

@@ -1,7 +1,13 @@
 
 <div class="row mt-4">
     <div class="col-3 card">
-        <app-video-list (onVideoSelected)="videoSelectionChanged($event)" [videoList]="videoListData"></app-video-list>
+      <div *ngIf="videoListData$ | async  as videoListData; else Loading">
+        <app-video-list
+          (onVideoSelected)="videoSelectionChanged($event)"
+          [videoList]="videoListData"></app-video-list>
+      </div>
+
+      <ng-template #Loading>video data loading...</ng-template>
     </div>
     <div class="col-5 card">
         <app-video-player [video]="selectedVideo"></app-video-player>
